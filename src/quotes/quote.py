@@ -5,3 +5,6 @@ class Quote(object):
 
     def __hash__(self):
         return hash(f'{self.RESPONSE_TEXT}{self.TOPIC}') #Also could do on topic and response_index
+
+    def __str__(self):
+        return f'"{self.RESPONSE_TEXT}" - {self.NPCID}'

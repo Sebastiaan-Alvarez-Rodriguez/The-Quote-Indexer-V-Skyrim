@@ -1,9 +1,14 @@
+from src.quotes.storage.read import read_options, read_location
+
 class QuoteManager(object):
-    """docstring for QuoteManager"""
-    def __init__(self, arg):
+    def __init__(self):
         super(QuoteManager, self).__init__()
-        self.arg = arg
-        
-    def append(self, quotelist):
+        # TODO: pick initial context (in UI) and lad the quotelist
+        self.context = context
+        self.quotelist = quotelist
+
+    def get():
+        return self.quotelist
+
+    def switch_context(self, quotelist):
         pass
-        #TODO: make such that one can pass quotelists
