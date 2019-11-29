@@ -13,7 +13,7 @@ class QuoteList(ABC):
         self.map = dict()
 
     @abstractmethod
-    def find(self, wordlist):
+    def find(self, wordlist, acceptscore):
         raise NotImplementedError('subclasses must override find()!')
 
 class SkyQuoteList(QuoteList):
@@ -25,6 +25,6 @@ class SkyQuoteList(QuoteList):
                     obj = Quote(line)
                     self.map[obj.RESPONSE_TEXT] = obj
 
-    def find(self, sentence):
+    def find(self, sentence, acceptscore):
         response = get_close_matches(sentence, self.map, n=1, cutoff=0.6)
         return None if len(response)==0 else self.map[response[0]]

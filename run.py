@@ -1,64 +1,78 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QDesktopWidget, QPushButton
-from PyQt5.QtGui import QIcon
+import os
+
+from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
 
-
-from src.quotes.quotelist import SkyQuoteList
-
-# convert: pyuic5 ui/src/main.ui -o ui/win_main.py
-
+from src.quotes.manager import QuoteManager
 from src.stt.stt import QuoteSpeech
 
-# quotespeech = QuoteSpeech('models/')
+import src.general.general as g
 
-# Maybe program QT shit myself: https://pythonspot.com/pyqt5-buttons/
-# https://build-system.fman.io/pyqt5-tutorial
+g.abs_loc = os.path.abspath(os.path.dirname(__file__))
+
+quotespeech = QuoteSpeech('models/')
+quotemanager= QuoteManager()
+
+
 class App(QWidget):
+    # https://pythonspot.com/pyqt5-buttons/
     def __init__(self):
         super().__init__()
-        self.title = 'PyQt5 button - pythonspot.com'
         self.left = 10
         self.top = 10
-        self.width = 320
-        self.height = 200
-        self.initUI()
+        self.width = 1200
+        self.height = 800
+        self.setWindowTitle('The Quote Indexer - V: Skyrim')
+        self.setGeometry(self.left, self.top, self.width, self.height)
+        self.speechButton()
         self.centralize()
 
-    def initUI(self):
-        self.setWindowTitle(self.title)
-        self.setGeometry(self.left, self.top, self.width, self.height)
-        button = QPushButton('PyQt5 button', self)
-        button.setToolTip('This is an example button')
-        button.move(100,70)
-        button.clicked.connect(self.on_click)
-        self.show()
+    def speechButton(self):
+        self.speech_button = QtWidgets.QPushButton(self)
+        self.speech_button.setObjectName("speech_button")
+        self.speech_button.setGeometry(QtCore.QRect(20, 20, 512, 512))
+        # self.speech_button.setStyleSheet("speech_button{background: transparent;background-color: rgba(255, 255, 255, 0); border: 0px;}")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("ui/res/mic.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.speech_button.setIcon(icon)
+        self.speech_button.setIconSize(QtCore.QSize(512, 512))
+        self.speech_button.clicked.connect(self.receive_quote)
 
     def centralize(self):
         fg = self.frameGeometry()
-        cp = QDesktopWidget().availableGeometry().center()
+        cp = QtWidgets.QDesktopWidget().availableGeometry().center()
         fg.moveCenter(cp)
         self.move(fg.topLeft())
 
     @pyqtSlot()
-    def on_click(self):
-        print('PyQt5 button click')
+    def receive_quote(self):
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("ui/res/mic_active.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.speech_button.setIcon(icon)
+
+        # detected = quotespeech.get_speech()
+        import time
+        time.sleep(1)
+
+
+# https://build-system.fman.io/pyqt5-tutorial
 
 #Tutorial
 # https://www.learnpyqt.com/
 #UI Material theme
-#https://doc.qt.io/qt-5/qtquickcontrols2-material.html
+# https://github.com/Alexhuszagh/BreezeStyleSheets
 
 def main():
     sys_argv = sys.argv
+    # sys_argv += ['--style', 'Fusion']
     app = QApplication(sys.argv)
     ex = App()
+    ex.show()
     sys.exit(app.exec_())
-    # sys_argv += ['--style', 'Fusion']
-    # app = QtWidgets.QApplication(sys.argv)
-    # window = MainWindow()
-    # window.show()
-    # app.exec()
+
     # loc = 'dataset/out_compressed.tsv'
     # x = SkyQuoteList(loc)
     # print('Read complete')

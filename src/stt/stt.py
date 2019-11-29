@@ -151,13 +151,17 @@ class QuoteSpeech(object):
         self.model.enableDecoderWithLM(alphabet, lm, trie, self.LM_ALPHA, self.LM_BETA)
 
     def get_speech(self):
-        vad_audio = VADAudio(aggressiveness=VAD_AGGRESSIVENESS,device=None,input_rate=DEFAULT_SAMPLE_RATE)
+        print('\t\tSTART')
+        vad_audio = VADAudio(aggressiveness=self.VAD_AGGRESSIVENESS,device=None,input_rate=self.DEFAULT_SAMPLE_RATE)
         frames = vad_audio.vad_collector()
-        stream_context = model.setupStream()
-
+        stream_context = self.model.setupStream()
         for frame in frames:
             if frame is not None:
                 self.model.feedAudioContent(stream_context, np.frombuffer(frame, np.int16))
             else:
                 return self.model.finishStream(stream_context)
         raise RuntimeError('Could not get speech')
+
+if __name__ == '__main__':
+    a = QuoteSpeech('/home/radon/Uni/api/The-Quote-Indexer-V-Skyrim/models/')
+    print(a.get_speech())

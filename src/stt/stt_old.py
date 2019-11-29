@@ -142,6 +142,7 @@ class VADAudio(Audio):
                     ring_buffer.clear()
 
 def main(ARGS):
+    print('\t\t\t\t\tSTART...')
     # Load DeepSpeech model
     if os.path.isdir(ARGS.model):
         model_dir = ARGS.model
