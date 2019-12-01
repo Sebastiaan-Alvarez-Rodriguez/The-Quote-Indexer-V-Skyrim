@@ -1,6 +1,6 @@
-class Quote(object):
+class SkyQuote(object):
     def __init__(self, line):
-        super(Quote, self).__init__()
+        super(SkyQuote, self).__init__()
         self.PLUGIN,self.QUEST,self.NPCID,self.CATEGORY,self.TYPE,self.TOPIC,self.RESPONSE_INDEX,self.FILENAME,self.FULLPATH,self.TOPIC_TEXT,self.PROMPT,self.RESPONSE_TEXT = line.split('\t')
 
     def __hash__(self):
