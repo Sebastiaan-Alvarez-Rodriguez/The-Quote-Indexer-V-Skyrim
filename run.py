@@ -96,6 +96,7 @@ class App(QWidget):
 # https://github.com/Alexhuszagh/BreezeStyleSheets
 
 #Okay working quotes: Luid spreken, linker middelvinger afstand tot mic, mic gericht op neus, mic in gat voor oortjes
+# Skyrim
 # "So you are interested in my potions and ingredients?"...
 # "Looking to protect yourself, or deal some damage?"
 # "By the nine"
@@ -117,6 +118,8 @@ class App(QWidget):
 # "I would suggest you do not spread this rumor further" (poorish)
 # "So I can stab you in the back" (poor)
 
+# Other
+# "To be or not to be, that is the question"
 
 def fill_globals():
     g.abs_loc = os.path.abspath(os.path.dirname(__file__))
