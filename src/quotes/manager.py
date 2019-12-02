@@ -24,4 +24,6 @@ class QuoteManager(object):
             self.context = context
             full_path = os.path.join(g.abs_loc,self.settings['Locations'][context])
             self.quotelist = self.loader.load(context, full_path)
-        
+    
+    def get_contexts(self):
+        return [x for x in self.loader.options]
