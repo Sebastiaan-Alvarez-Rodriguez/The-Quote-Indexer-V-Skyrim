@@ -1,13 +1,24 @@
 from difflib import get_close_matches
 
 from src.quotes.quotelist import QuoteList
+from src.quotes.quote import Quote
 
-class OtherQuote(object):
+class OtherQuote(Quote):
     def __init__(self, line):
         if (len(line.split('\t')) != 2):
             l = len(line.split('\t'))
             print(f"Problem found. splitted: {l}. Line: {line}")
         self.QUOTE,self.PERSON = line.split('\t')
+
+
+    def get_quote(self):
+        return str(self)
+
+    def get_url(self):
+        return None
+
+    def get_extra_info(self):
+        return None
 
     def __hash__(self):
         return hash(self.QUOTE)

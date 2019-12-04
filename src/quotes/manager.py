@@ -5,14 +5,12 @@ from src.dynamicloader.loader import DynamicLoader
 
 import src.general.general as g
 
-class QuoteManager(object):            
-    configpath = os.path.join(g.abs_loc, 'configs')
-
+class QuoteManager(object):
     def __init__(self):
         super(QuoteManager, self).__init__()
         self.loader   = DynamicLoader()
-        self.prefs    = Config(os.path.join(self.configpath, 'prefs.ini'))
-        self.settings = Config(os.path.join(self.configpath, 'settings.ini'))
+        self.prefs    = Config(os.path.join(g.cnf_loc, 'prefs.ini'))
+        self.settings = Config(os.path.join(g.cnf_loc, 'settings.ini'))
         self.context  = self.prefs['DEFAULT']['dictionary'].lower()
         self.switch_context(self.context, no_cache=True)
 

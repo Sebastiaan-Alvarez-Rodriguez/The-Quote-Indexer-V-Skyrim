@@ -8,8 +8,11 @@ class DynamicLoader(object):
     
     def __init__(self):
         super(DynamicLoader, self).__init__()
-        options_pre = os.listdir(g.dyn_loc) # '/home/Uni/.../dynamic/Skyrim'
-        
+        options_pre = os.listdir(g.dyn_loc)
+        if 'skyrim' in options_pre:
+            options_pre.remove('skyrim')
+            options_pre.insert(0,'skyrim')
+
         self.options = dict()
         for item in options_pre:
             full_path = os.path.join(g.dyn_loc,item)
