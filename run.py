@@ -46,7 +46,8 @@ def main():
     g.abs_loc = os.path.abspath(os.path.dirname(__file__))
     g.dyn_loc = os.path.join(g.abs_loc, 'dynamic')
     g.cnf_loc = os.path.join(g.abs_loc, 'configs')
-
+    g.snd_loc = os.path.join(g.abs_loc, 'sounds')
+    g.mdl_loc = os.path.join(g.abs_loc, 'models')
     handler = UIHandler()
     handler.run()
 

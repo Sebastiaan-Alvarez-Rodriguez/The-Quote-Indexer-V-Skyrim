@@ -6,6 +6,8 @@ import wave
 import webrtcvad
 from scipy import signal
 
+import src.general.general as g
+
 class Audio(object):
     """Streams raw audio from microphone. Data is received in a separate thread, and stored in a buffer, to be read from."""
 
@@ -77,7 +79,7 @@ class Audio(object):
     frame_duration_ms = property(lambda self: 1000 * self.block_size // self.sample_rate)
 
     def write_wav(self, filename, data):
-        logging.info("write wav %s", filename)
+        logging.info('write wav %s', filename)
         wf = wave.open(filename, 'wb')
         wf.setnchannels(self.CHANNELS)
         # wf.setsampwidth(self.pa.get_sample_size(FORMAT))
@@ -141,12 +143,12 @@ class QuoteSpeech(object):
     LM_BETA = 1.85
     VAD_AGGRESSIVENESS = 3
 
-    def __init__(self, model_dir):
+    def __init__(self):
         super(QuoteSpeech, self).__init__()
-        model_graph = os.path.join(model_dir, 'output_graph.pbmm')
-        alphabet    = os.path.join(model_dir, 'alphabet.txt')
-        lm          = os.path.join(model_dir, "lm.binary")
-        trie        = os.path.join(model_dir, "trie")
+        model_graph = os.path.join(g.mdl_loc, 'output_graph.pbmm')
+        alphabet    = os.path.join(g.mdl_loc, 'alphabet.txt')
+        lm          = os.path.join(g.mdl_loc, 'lm.binary')
+        trie        = os.path.join(g.mdl_loc, 'trie')
         self.model = deepspeech.Model(model_graph, self.N_FEATURES, self.N_CONTEXT, alphabet, self.BEAM_WIDTH)
         self.model.enableDecoderWithLM(alphabet, lm, trie, self.LM_ALPHA, self.LM_BETA)
 

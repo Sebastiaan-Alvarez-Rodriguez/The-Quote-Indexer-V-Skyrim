@@ -20,6 +20,9 @@ class OtherQuote(Quote):
     def get_extra_info(self):
         return None
 
+    def get_audio_path(self):
+        return None
+
     def __hash__(self):
         return hash(self.QUOTE)
 

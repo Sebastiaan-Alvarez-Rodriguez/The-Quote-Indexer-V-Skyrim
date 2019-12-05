@@ -15,3 +15,7 @@ class Quote(ABC):
     @abstractmethod
     def get_extra_info(self):
         raise NotImplementedError('subclasses must override get_extra_info()!')
+
+    @abstractmethod
+    def get_audio_path(self):
+        raise NotImplementedError('subclasses must override get_audio_path()!')

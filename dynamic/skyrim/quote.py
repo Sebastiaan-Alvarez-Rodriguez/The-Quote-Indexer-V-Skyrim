@@ -1,6 +1,9 @@
-from src.quotes.quote import Quote
+import os
 
-class SkyQuote(Quote):
+from src.quotes.quote import Quote
+import src.general.general as g
+
+class SkyQuote(Quote):    
     def __init__(self, line):
         super(SkyQuote, self).__init__()
         self.PLUGIN,self.QUEST,self.NPCID,self.CATEGORY,self.TYPE,self.TOPIC,self.RESPONSE_INDEX,self.FILENAME,self.FULLPATH,self.TOPIC_TEXT,self.PROMPT,self.RESPONSE_TEXT = line.split('\t')
@@ -51,8 +54,18 @@ class SkyQuote(Quote):
     def get_extra_info(self):
         return None
 
+    def get_audio_path(self):
+        print('Looking for audio')
+        if '"no voice".xwm' in self.FULLPATH:
+            return None
+        #Data\Sound\Voice\Skyrim.esm\MaleNord\MQ102__000D50EE_1.xwm
+        #Skyrim.esm\MaleNord\MQ102__000D50EE_1.
+        loc = os.path.join(g.snd_loc,'skyrim',self.FULLPATH[17:-3].lower().replace('\\', os.path.sep) + 'wav')
+        print(f'Generated path: {loc}. This is a file: {os.path.isfile(loc)}')
+        return loc if os.path.isfile(loc) else None
+
     def __hash__(self):
-        return hash(f'{self.RESPONSE_TEXT}{self.TOPIC}') #Also could do on topic and response_index
+        return hash(f'{self.RESPONSE_TEXT}{self.TOPIC}')
 
     def __str__(self): 
         return f'"{self.RESPONSE_TEXT}"\n- {self.get_normal_NPC_name()}'
