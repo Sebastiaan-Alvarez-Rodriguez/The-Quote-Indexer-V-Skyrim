@@ -26,7 +26,6 @@ class DynamicLoader(object):
             spec = importlib.util.spec_from_file_location(f'{name}.dm', path)
             module = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(module)
-            # module.SkyQuoteList()
             return module.QList(*args)
         else:
             raise KeyError(f"There is no key named '{name}'. Available: {str(self.options)}")

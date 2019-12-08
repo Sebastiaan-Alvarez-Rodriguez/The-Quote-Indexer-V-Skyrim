@@ -9,8 +9,6 @@ from ui.handler import UIHandler
 
 import src.general.general as g
 
-# https://build-system.fman.io/pyqt5-tutorial
-
 #Tutorial
 # https://www.learnpyqt.com/
 #UI Material theme
@@ -44,6 +42,7 @@ import src.general.general as g
 
 def main():
     g.abs_loc = os.path.abspath(os.path.dirname(__file__))
+    g.dat_loc = os.path.join(g.abs_loc, 'datasets')
     g.dyn_loc = os.path.join(g.abs_loc, 'dynamic')
     g.cnf_loc = os.path.join(g.abs_loc, 'configs')
     g.snd_loc = os.path.join(g.abs_loc, 'sounds')

@@ -6,6 +6,8 @@ from src.quotes.quotelist import QuoteList
 class QList(QuoteList):
     def __init__(self, file):
         super(QList, self).__init__()
+        if file == None:
+            raise RuntimeError('Skyrim quote package really needs a dataset')
         with open(file, 'r') as quotefile:
                 next(quotefile)
                 for line in quotefile:

@@ -12,7 +12,6 @@ from src.quotes.manager import QuoteManager
 from src.stt.stt import QuoteSpeech
 
 class UIHandler(object):
-    """docstring for UIHandler"""
     def __init__(self):
         super(UIHandler, self).__init__()
         self.qapp = QApplication(sys.argv)
@@ -51,9 +50,7 @@ class UIHandler(object):
         self.app.speaker_button.setEnabled(True)
 
     def on_list_selected_changed(self, cur, prev):
-        print(f'You clicked on item with text: {self.app.model.item(cur.row()).text()}')
         self.quotemanager.switch_context(self.app.model.item(cur.row()).text())
-        #TODO: make sure that an item looks less ugly, and has a big icon on the side (at least 24x24)
     
     def on_speech_button_clicked(self):
         print('Received request for quote input')
@@ -83,15 +80,20 @@ class UIHandler(object):
         print(f'Matching quote: {quote}')
         if quote == None:
             self.app.set_help_text("Sorry, didn't catch that. Please try again!")
-            # self.disable_url()
-            # self.disable_speaker
         else:
             self.current_quote = quote
-            self.app.set_help_text("Found something!")
+            self.app.set_help_text('Found something!')
             self.app.set_quote_text(quote.get_quote())
             self.enable_url()
             print(f'Found audio: {quote.get_audio_path() != None}')
             if quote.get_audio_path() != None:
                 self.enable_speaker()
+            else:
+                self.disable_speaker()
             
+            extra_info = quote.get_extra_info()
+            if extra_info != None:
+                self.app.set_extra_text(extra_info)
+            else:
+                self.app.set_extra_text('No extra information available')
         self.finish_speech()

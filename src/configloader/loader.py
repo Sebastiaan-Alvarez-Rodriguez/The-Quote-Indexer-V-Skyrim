@@ -1,11 +1,9 @@
 import configparser
 import os
 
-
-class Config(object):
-    """docstring for Config"""
+class ConfigLoader(object):
     def __init__(self, path):
-        super(Config, self).__init__()
+        super(ConfigLoader, self).__init__()
         self.config = configparser.ConfigParser()
         self.config.read(path)
         
