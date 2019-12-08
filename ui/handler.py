@@ -84,8 +84,11 @@ class UIHandler(object):
             self.current_quote = quote
             self.app.set_help_text('Found something!')
             self.app.set_quote_text(quote.get_quote())
-            self.enable_url()
-            print(f'Found audio: {quote.get_audio_path() != None}')
+            if self.current_quote.get_url() != None:
+                self.enable_url()
+            else:
+                self.disable_url()
+
             if quote.get_audio_path() != None:
                 self.enable_speaker()
             else:

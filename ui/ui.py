@@ -100,8 +100,8 @@ class App(QWidget):
         layout.addWidget(self.speech_button,  0,0)
         layout.addWidget(self.help_text,      0,1,1,10)
         layout.addWidget(self.list_view,      1,0,10,1)
-        layout.addWidget(self.quote_text,     1,1,3,10)
-        layout.addWidget(self.more_info,      2,1,6,10)
+        layout.addWidget(self.quote_text,     1,1,7,10)
+        layout.addWidget(self.more_info,      7,1,2,10)
         layout.addWidget(self.url_button,    10,1, QtCore.Qt.AlignCenter)
         layout.addWidget(self.speaker_button,10,2, QtCore.Qt.AlignCenter)
 
@@ -131,6 +131,9 @@ class App(QWidget):
 
     def set_quote_text(self, text):
         self.quote_text.setText(text)
+
+    def set_extra_text(self, text):
+        self.more_info.setText(text)
 
     def set_list_selected_changed_listener(self, fun):
         self.list_view.selectionModel().currentChanged.connect(fun)
