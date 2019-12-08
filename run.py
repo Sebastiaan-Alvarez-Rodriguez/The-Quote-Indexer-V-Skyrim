@@ -38,7 +38,11 @@ import src.general.general as g
 # "So I can stab you in the back" (poor)
 
 # Other
-# "To be or not to be, that is the question"
+# "To be or not to be, that is the question" (be=pee is also one, look out)
+# Today's gossip is tomorrow's headline
+# A broken mirror is good luck if you want it to be
+# Do or do not. There is no try
+# This is all me!
 
 def main():
     g.abs_loc = os.path.abspath(os.path.dirname(__file__))

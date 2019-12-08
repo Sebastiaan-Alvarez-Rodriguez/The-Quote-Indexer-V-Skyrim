@@ -5,6 +5,7 @@ from playsound import playsound
 
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import QApplication
+import qdarkstyle
 
 from ui.ui import App
 
@@ -23,6 +24,7 @@ class UIHandler(object):
         self.app.set_speech_button_clicked_listener(self.on_speech_button_clicked)
         self.app.set_url_button_clicked_listener(self.on_url_button_clicked)
         self.app.set_speaker_button_clicked_listener(self.on_speaker_button_clicked)
+        self.qapp.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
         self.finish_speech()
 
         self.current_quote = None

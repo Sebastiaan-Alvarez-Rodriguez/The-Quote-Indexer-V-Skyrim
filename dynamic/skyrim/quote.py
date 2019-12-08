@@ -164,13 +164,13 @@ class SkyQuote(Quote):
         return string
 
     def get_audio_path(self):
-        print('Looking for audio')
         if '"no voice".xwm' in self.FULLPATH:
             return None
         #Data\Sound\Voice\Skyrim.esm\MaleNord\MQ102__000D50EE_1.xwm
         #Skyrim.esm\MaleNord\MQ102__000D50EE_1.
         loc = os.path.join(g.snd_loc,'skyrim',self.FULLPATH[17:-3].lower().replace('\\', os.path.sep) + 'wav')
-        print(f'Generated path: {loc}. This is a file: {os.path.isfile(loc)}')
+        if not os.path.isfile(loc):
+            print(f'Expected audio file not found! Path: {loc}')
         return loc if os.path.isfile(loc) else None
 
     def __hash__(self):
