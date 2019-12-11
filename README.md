@@ -1,36 +1,29 @@
 # The Quote Indexer V: Skyrim
-This project is created to convert speech to a certain quote
-It uses [this](https://github.com/mozilla/DeepSpeech/tree/master/examples/mic_vad_streaming) for setup.
+A fun project, created to index a dataset of known quotes!
+Its idea is very simple:
+Speak any quote, simple or advanced, correct or almost correct, and get the original quote out.  
+
+There is even a mapping from famous TESV-quotes to sounds.
+
+*One final note*: This github repository only contains the source code, not the datasets and sound files.
+We will create downloadable executables and provide links in some time. 
 
 ## Requirements
 ```bash
 pip3 install deepspeech==0.5.1 --user
+pip3 install pyqt5 --user
+pip3 install qdarkstyle --user
+pip3 install playsound --user
 ```
 
-## Run
-Need to have microphone in laptop while booting, errors otherwise.
-### Run deepspeech itself
+You need a pre-trained Deepspeech model to convert speech to text.
+You can either use [pre-trained Deepspeech 0.51](https://github.com/mozilla/DeepSpeech/releases/download/v0.5.1/deepspeech-0.5.1-models.tar.gz),
+or you have to train your own neural network...  
+
+You need to have a microphone available to record speech.
+
+## Running
+Simply run
 ```bash
-deepspeech \
---model models/output_graph.pbmm \
---alphabet models/alphabet.txt \
---lm models/lm.binary \
---trie models/trie \
---audio audio/2830-3980-0043.wav
-```
-### Run deepspeech program
-```bash
-python3 src/speech-to-text/stt.py \
---model models/output_graph.pbmm \
---alphabet models/alphabet.txt \
---lm models/lm.binary \
---trie models/trie \
---file oof.wav
-```
-### Run audio device info script in
-```python
-import pyaudio
-p = pyaudio.PyAudio()
-for i in range(p.get_device_count()):
-    print p.get_device_info_by_index(i)
+python3 run.py
 ```
