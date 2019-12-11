@@ -7,7 +7,7 @@ import webrtcvad
 from scipy import signal
 
 import src.general.general as g
-
+from ui.messager import msg
 class Audio(object):
     """Streams raw audio from microphone. Data is received in a separate thread, and stored in a buffer, to be read from."""
 
@@ -153,18 +153,16 @@ class QuoteSpeech(object):
         self.model.enableDecoderWithLM(alphabet, lm, trie, self.LM_ALPHA, self.LM_BETA)
 
     def get_speech(self):
-        vad_audio = VADAudio(aggressiveness=self.VAD_AGGRESSIVENESS,device=None,input_rate=self.DEFAULT_SAMPLE_RATE)
-        frames = vad_audio.vad_collector()
-        stream_context = self.model.setupStream()
-        for frame in frames:
-            if frame is not None:
-                self.model.feedAudioContent(stream_context, np.frombuffer(frame, np.int16))
-            else:
-                detected_str = self.model.finishStream(stream_context)
-                vad_audio.destroy()
-                return detected_str
-        raise RuntimeError('Could not get speech')
-
-if __name__ == '__main__':
-    a = QuoteSpeech('/home/radon/Uni/api/The-Quote-Indexer-V-Skyrim/models/')
-    print(a.get_speech())
+        try:
+            vad_audio = VADAudio(aggressiveness=self.VAD_AGGRESSIVENESS,device=None,input_rate=self.DEFAULT_SAMPLE_RATE)
+            frames = vad_audio.vad_collector()
+            stream_context = self.model.setupStream()
+            for frame in frames:
+                if frame is not None:
+                    self.model.feedAudioContent(stream_context, np.frombuffer(frame, np.int16))
+                else:
+                    detected_str = self.model.finishStream(stream_context)
+                    vad_audio.destroy()
+                    return detected_str
+        except OSError as e:
+            msg('Could not open audio device (Linux at it again)', severity=Severity.CRITICAL)
