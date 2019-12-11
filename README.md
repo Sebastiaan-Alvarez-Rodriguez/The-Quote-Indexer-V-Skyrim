@@ -27,3 +27,6 @@ Simply run
 ```bash
 python3 run.py
 ```
+
+## dynamic-loading-protocol
+Do you want to add your own dataset to this quote indexer?

@@ -118,7 +118,6 @@ class App(QWidget):
             item = QtGui.QStandardItem(x)
             item.setEditable(False)
             self.model.appendRow(item)
-        # item = QtGui.QStandardItem('oooooooof what a very most super ultra long text window story option to select')
         self.list_view.setModel(self.model)
         self.list_view.setSelectionMode(QtWidgets.QListView.SingleSelection)
 
