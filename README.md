@@ -6,8 +6,8 @@ Speak any quote, simple or advanced, correct or almost correct, and get the orig
 There is even a mapping from famous TESV-quotes to sounds.
 
 There are some pages to visit:
- * [Progress Reports](https://sebastiaan-alvarez-rodriguez.github.io/The-Quote-Indexer-V-Skyrim/progress/)
- * [Credits](https://sebastiaan-alvarez-rodriguez.github.io/The-Quote-Indexer-V-Skyrim/credits/)
+ * [Progress Reports](https://sebastiaan-alvarez-rodriguez.github.io/The-Quote-Indexer-V-Skyrim/progress)
+ * [Credits](https://sebastiaan-alvarez-rodriguez.github.io/The-Quote-Indexer-V-Skyrim/credits)
 
 ## Requirements
 ```bash
