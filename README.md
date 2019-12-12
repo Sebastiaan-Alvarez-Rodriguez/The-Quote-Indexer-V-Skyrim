@@ -5,8 +5,9 @@ Speak any quote, simple or advanced, correct or almost correct, and get the orig
 
 There is even a mapping from famous TESV-quotes to sounds.
 
-*One final note*: This github repository only contains the source code, not the datasets and sound files.
-We will create downloadable executables and provide links in some time. 
+There are some pages to visit:
+ * [Progress Reports](https://sebastiaan-alvarez-rodriguez.github.io/The-Quote-Indexer-V-Skyrim/progress/)
+ * [Credits](https://sebastiaan-alvarez-rodriguez.github.io/The-Quote-Indexer-V-Skyrim/credits/)
 
 ## Requirements
 ```bash

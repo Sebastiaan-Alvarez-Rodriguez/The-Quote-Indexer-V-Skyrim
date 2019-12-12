@@ -1,6 +1,0 @@
-abs_loc = ''
-cnf_loc = ''
-dat_loc = ''
-dyn_loc = ''
-mdl_loc = ''
-snd_loc = ''
