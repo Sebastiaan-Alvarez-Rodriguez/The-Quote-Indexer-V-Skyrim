@@ -12,6 +12,7 @@ from ui.ui import App
 
 from src.quotes.manager import QuoteManager
 from src.stt.stt import QuoteSpeech
+import src.general.general as g
 
 '''Main handler for this program. Setups all UI interaction callbacks'''
 class UIHandler(object):
