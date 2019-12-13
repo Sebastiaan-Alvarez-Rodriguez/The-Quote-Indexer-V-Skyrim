@@ -154,7 +154,6 @@ class SkyQuote(Quote):
                 string += 'When the player is detected "assaulting" someone (attacking passive npc), you may hear this.'
             elif self.TYPE == 'BASH':
                 string += 'If an enemy performs a bashing attack, they will shout this.'
-            # Detection NOTA
         elif self.CATEGORY == 'Detection':
             if self.TYPE == 'NOTA':
                 string += 'Enemies will say this if the player is sneaking, and the enemies notice something.'
@@ -163,14 +162,10 @@ class SkyQuote(Quote):
                 string += "NPC's will say this if they find a dead body"
         return string
 
-    def get_audio_path(self):
+    def get_audio_path(self, basepath):
         if '"no voice".xwm' in self.FULLPATH:
             return None
-        #Data\Sound\Voice\Skyrim.esm\MaleNord\MQ102__000D50EE_1.xwm
-        #Skyrim.esm\MaleNord\MQ102__000D50EE_1.
-        loc = os.path.join(g.snd_loc,'skyrim',self.FULLPATH[17:-3].lower().replace('\\', os.path.sep) + 'wav')
-        if not os.path.isfile(loc):
-            print(f'Expected audio file not found! Path: {loc}')
+        loc = os.path.join(basepath,self.FULLPATH[17:-3].lower().replace('\\', os.path.sep) + 'wav')
         return loc if os.path.isfile(loc) else None
 
     def __hash__(self):

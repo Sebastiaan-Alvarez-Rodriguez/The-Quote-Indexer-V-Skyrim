@@ -5,9 +5,6 @@ from src.quotes.quote import Quote
 
 class OtherQuote(Quote):
     def __init__(self, line):
-        if (len(line.split('\t')) != 2):
-            l = len(line.split('\t'))
-            print(f"Problem found. splitted: {l}. Line: {line}")
         self.QUOTE,self.PERSON = line.split('\t')
 
 
@@ -20,19 +17,20 @@ class OtherQuote(Quote):
     def get_extra_info(self):
         return None
 
-    def get_audio_path(self):
+    def get_audio_path(self, basepath):
         return None
 
     def __hash__(self):
         return hash(self.QUOTE)
 
     def __str__(self):
-        return f'"{self.QUOTE}" - {self.PERSON}'
+        return f'"{self.QUOTE}"\n- {self.PERSON}'
 
 
 class QList(QuoteList):
     def __init__(self, file):
         super(QList, self).__init__()
+        self.map = dict()
         with open(file, 'r') as quotefile:
                 next(quotefile)
                 for line in quotefile:

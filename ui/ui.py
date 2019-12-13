@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
 
 import src.general.general as g
 
+# Make a speech button
 def make_speech_button(parent):
     speech_button = QtWidgets.QPushButton(parent)
     speech_button.setObjectName('speech_button')
@@ -17,6 +18,7 @@ def make_speech_button(parent):
     speech_button.setEnabled(False)
     return speech_button
 
+# Make a url button
 def make_url_button(parent):
     url_button = QtWidgets.QPushButton(parent)
     url_button.setObjectName('url_button')
@@ -28,6 +30,7 @@ def make_url_button(parent):
     url_button.setEnabled(False)
     return url_button
 
+# Make a speaker button
 def make_speaker_button(parent):
     speaker_button = QtWidgets.QPushButton(parent)
     speaker_button.setObjectName('speaker_button')
@@ -39,6 +42,7 @@ def make_speaker_button(parent):
     speaker_button.setEnabled(False)
     return speaker_button
 
+# Make help field
 def make_help_field(parent):
     help_text = QtWidgets.QLabel(parent)
     help_text.setObjectName('help_text')
@@ -47,6 +51,7 @@ def make_help_field(parent):
     help_text.setText('Press speaker button and start speaking...')
     return help_text
 
+# Make quote field
 def make_quote_field(parent):
     quote_text = QtWidgets.QLabel(parent)
     quote_text.setObjectName('quote_text')
@@ -57,6 +62,7 @@ def make_quote_field(parent):
     quote_text.setWordWrap(True)
     return quote_text
 
+# Make more-info field
 def make_moreinfo_field(self):
     more_info = QtWidgets.QLabel(self)
     more_info.setObjectName('more_info')
@@ -66,6 +72,7 @@ def make_moreinfo_field(self):
     more_info.setWordWrap(True)
     return more_info
 
+# Make listview field
 def make_listview(self):
     list_view = QtWidgets.QListView(self)
     list_view.setGeometry(QtCore.QRect(20, 256, 256, 256))
@@ -73,6 +80,7 @@ def make_listview(self):
     list_view.setObjectName('listView')
     return list_view
 
+'''Simple class to create UI'''
 class App(QWidget):
     def __init__(self):
         super().__init__()
@@ -93,6 +101,7 @@ class App(QWidget):
         self.make_layout()
         self.centralize()
 
+    # Places all widgets on a grid, with widths and heights
     def make_layout(self):
         layout = QtWidgets.QGridLayout(self)
         layout.setObjectName('layout_out')
@@ -105,12 +114,14 @@ class App(QWidget):
         layout.addWidget(self.url_button,    10,1, QtCore.Qt.AlignCenter)
         layout.addWidget(self.speaker_button,10,2, QtCore.Qt.AlignCenter)
 
+    # Centralizes the window on the screen of the user
     def centralize(self):
         fg = self.frameGeometry()
         cp = QtWidgets.QDesktopWidget().availableGeometry().center()
         fg.moveCenter(cp)
         self.move(fg.topLeft())
 
+    # Places all detected dynamically importable datasets in the listview
     def populate_list(self, items):
         self.model = QtGui.QStandardItemModel(self.list_view)
 
@@ -121,27 +132,35 @@ class App(QWidget):
         self.list_view.setModel(self.model)
         self.list_view.setSelectionMode(QtWidgets.QListView.SingleSelection)
 
+    # Selects the first item to be selected and loaded
     def select_first_item(self):
         self.list_view.selectionModel().select(self.model.index(0,0), self.list_view.selectionModel().Select)
         self.on_listview_selected_changed(self.model.index(0,0), None)
 
+    # Sets given text as help text
     def set_help_text(self, text):
         self.help_text.setText(text)
 
+    # Sets given text as quote text
     def set_quote_text(self, text):
         self.quote_text.setText(text)
 
+    # Sets given text as extra info text
     def set_extra_text(self, text):
         self.more_info.setText(text)
 
+    # Sets callback for listview-selection-changed
     def set_list_selected_changed_listener(self, fun):
         self.list_view.selectionModel().currentChanged.connect(fun)
 
+    # Sets callback for speech button clicks
     def set_speech_button_clicked_listener(self, fun):
         self.speech_button.clicked.connect(fun)
 
+    # Sets callback for url button clicks
     def set_url_button_clicked_listener(self, fun):
         self.url_button.clicked.connect(fun)
 
+    # Sets callback for speaker button clicks
     def set_speaker_button_clicked_listener(self, fun):
         self.speaker_button.clicked.connect(fun)
