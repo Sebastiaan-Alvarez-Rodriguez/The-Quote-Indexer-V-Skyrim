@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
 
 class Quote(ABC):
-     '''Abstract object, where all dynamic loader quotes should inherit from'''
+    '''Abstract object, where all dynamic loader quotes should inherit from'''
+
     def __init__(self):
         super(Quote, self).__init__()
-        self.map = dict()
 
     # Return a human-readable quote
     @abstractmethod
