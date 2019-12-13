@@ -1,3 +1,31 @@
+# 2019-12-13
+Bug fixing and documentation is complete.
+
+Updated the project README, and update the site.
+Minor changes to the protocol, for convenience.
+
+Changed from deepspeech 0.5.1 to 0.6.0, because it came out recently, and performs slightly better.
+
+## TODO
+Nothing, all completed.
+
+## Done
+The following items are complete:
+ * Construct dataset for The Elder Scrolls V: Skyrim
+ * Voice Activity Detection (VAD)
+ * Text-to-speech implementation
+ * Dataset with famous quotes
+ * Main infrastructure
+ * Main UI
+ * Dynamic loading of datasets
+ * Hyperlinking to relevant online pages
+ * Play spoken quotes
+ * Dark theme
+ * Documentation
+ * Bug fixing
+
+------
+
 # 2019-12-11
 Working on bug fixing and documentation.
 Updated the project README, and created this site, including all progress reports.
