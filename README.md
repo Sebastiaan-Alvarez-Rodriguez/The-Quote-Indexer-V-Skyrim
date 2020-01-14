@@ -15,7 +15,7 @@ pip3 install deepspeech==0.6.0 pyqt5 qdarkstyle playsound --user
 Furthermore, you need
  * a trained Deepspeech model to convert speech to text. You can either use [pre-trained Deepspeech 0.6.0](https://github.com/mozilla/DeepSpeech/releases/download/v0.6.0/deepspeech-0.6.0-models.tar.gz), or you have to train your own (compatible) neural network... Store the downloaded or trained mdel in the `model` directory of this framework.
  * a microphone, in order to record speech.
- * Finally, you need to have at least one dataset available. You must find a dataset and implement support for it as described below. We do not upload here because of copyright reasons.
+ * Finally, you need to have at least one dataset. You should find a dataset and implement support for it as described below. We do not upload here because of copyright reasons. Place dataset in `datasets` folder.
 
 ## Running
 Simply run
