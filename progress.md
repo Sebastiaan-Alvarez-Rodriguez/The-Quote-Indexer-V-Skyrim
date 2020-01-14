@@ -1,4 +1,29 @@
 # 2019-12-13
+All those examinations finally finished.
+Created final report, written as a technical paper.
+Made it available from this website.
+
+## TODO
+Nothing, all completed.
+
+## Done
+The following items are complete:
+ * Construct dataset for The Elder Scrolls V: Skyrim
+ * Voice Activity Detection (VAD)
+ * Text-to-speech implementation
+ * Dataset with famous quotes
+ * Main infrastructure
+ * Main UI
+ * Dynamic loading of datasets
+ * Hyperlinking to relevant online pages
+ * Play spoken quotes
+ * Dark theme
+ * Documentation
+ * Bug fixing
+
+------
+
+# 2019-12-13
 Bug fixing and documentation is complete.
 
 Updated the project README, and update the site.
@@ -7,7 +32,8 @@ Minor changes to the protocol, for convenience.
 Changed from deepspeech 0.5.1 to 0.6.0, because it came out recently, and performs slightly better.
 
 ## TODO
-Nothing, all completed.
+The following things need to be worked on:
+ * Report
 
 ## Done
 The following items are complete:
@@ -37,6 +63,7 @@ Further documentation will follow, as well as updates to this website.
 The following things need to be worked on:
  * Documentation
  * Bug fixing
+ * Report
 
 ## Done
 The following items are complete:
@@ -78,6 +105,7 @@ Now, all the implementations are complete. Now it is time for documentation, and
 The following things need to be worked on:
  * Documentation
  * Bug fixing
+ * Report
 
 ## Done
 The following items are complete:
@@ -116,6 +144,7 @@ I might want to look into compressing the WAV files somehow.
 ## TODO
 The following things need to be worked on:
  * Dark theme
+ * Report
 
 ## Done
 The following items are complete:
@@ -148,6 +177,7 @@ Soon, I will start developping more fun things (play spoken quotes, dark theme).
 The following things need to be worked on:
  * Play spoken quotes
  * Dark theme
+ * Report
 
 ## Done
 The following items are complete:
@@ -178,6 +208,7 @@ The following things need to be worked on:
  * Main UI
  * Hyperlinking to relevant online pages
  * Play spoken quotes
+ * Report
 
 ## Done
 The following items are complete:
@@ -206,6 +237,7 @@ The following things need to be worked on:
  * Main infrastructure
  * Main UI
  * Dynamic loading of datasets
+ * Report
 
 ## Done
 The following items are complete:
@@ -231,6 +263,7 @@ The following things need to be worked on:
  * Main UI
  * Dynamic loading of datasets
  * Dataset with famous quotes
+ * Report
 
 ## Done
 The following items are complete:
@@ -255,6 +288,7 @@ The following things need to be worked on:
  * Text-to-speech implementation
  * Dynamic loading of datasets
  * Dataset with famous quotes
+ * Report
 
 ## Done
 The following items are complete:

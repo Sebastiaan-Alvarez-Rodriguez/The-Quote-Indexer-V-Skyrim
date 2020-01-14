@@ -3,8 +3,6 @@ A fun project, created to index a dataset of known quotes!
 Its idea is very simple:
 Speak any quote, simple or advanced, correct or almost correct, and get the original quote out.  
 
-There is even a mapping from famous TESV-quotes to sounds.
-
 There are some pages to visit:
  * [Progress Reports](https://sebastiaan-alvarez-rodriguez.github.io/The-Quote-Indexer-V-Skyrim/progress.html)
  * [Credits](https://sebastiaan-alvarez-rodriguez.github.io/The-Quote-Indexer-V-Skyrim/credits.html)
@@ -14,11 +12,10 @@ There are some pages to visit:
 pip3 install deepspeech==0.6.0 pyqt5 qdarkstyle playsound --user
 ```
 
-You need a pre-trained Deepspeech model to convert speech to text.
-You can either use [pre-trained Deepspeech 0.6.0](https://github.com/mozilla/DeepSpeech/releases/download/v0.6.0/deepspeech-0.6.0-models.tar.gz),
-or you have to train your own neural network...  
-
-You need to have a microphone, in order to record speech.
+Furthermore, you need
+ * a trained Deepspeech model to convert speech to text. You can either use [pre-trained Deepspeech 0.6.0](https://github.com/mozilla/DeepSpeech/releases/download/v0.6.0/deepspeech-0.6.0-models.tar.gz), or you have to train your own (compatible) neural network... Store the downloaded or trained mdel in the `model` directory of this framework.
+ * a microphone, in order to record speech.
+ * Finally, you need to have at least one dataset available. You must find a dataset and implement support for it as described below. We do not upload here because of copyright reasons.
 
 ## Running
 Simply run
@@ -136,6 +133,10 @@ class QList(QuoteList):
     def find(self, sentence, acceptscore):
         response = get_close_matches(sentence, self.map, n=1, cutoff=0.6)
         return None if len(response)==0 else self.map[response[0]]
-
 ```
 This minimal example works well for the example dataset.
+
+
+## Report
+We created a report for this work. It can be found [here](https://sebastiaan-alvarez-rodriguez.github.io/The-Quote-Indexer-V-Skyrim/res/API.pdf).
+It describes this work in detail, and provides background information.
