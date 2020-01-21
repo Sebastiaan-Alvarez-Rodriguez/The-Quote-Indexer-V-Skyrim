@@ -78,7 +78,7 @@ class UIHandler(object):
     # Callback for speaker button clicks (we play sound here)
     def on_speaker_button_clicked(self):
         if self.current_quote != None:
-            path = self.current_quote.get_audio_path()
+            path = self.current_quote.get_audio_path(os.path.join(g.snd_loc,self.quotemanager.get_current_context()))
             if path != None:
                 playsound(path)
 
